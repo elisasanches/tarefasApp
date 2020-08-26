@@ -21,7 +21,7 @@
 
 <ion-item lines="none">
   <ion-label position="stacked">Nome</ion-label>
-  <ion-input type="text" placeholder="Digite seu nome"></ion-input>
+  <ion-input formControlName="nome" type="text" placeholder="Digite seu nome"></ion-input>
   <ng-container *ngFor="let erro of mensagens_validacao.nome">
     <span class="msg-erro"
     *ngIf="formRegistro.get('nome').hasError(erro.tipo) && (formRegistro.get('nome').dirty || formRegistro.get('nome').touched)">
@@ -33,7 +33,7 @@
 
 <ion-item lines="none">
   <ion-label position="stacked">CPF</ion-label>
-  <ion-input type="text" placeholder="Digite seu CPF "></ion-input>
+  <ion-input formControlName="cpf" type="text" placeholder="Digite seu CPF "></ion-input>
   <ng-container *ngFor="let erro of mensagens_validacao.cpf">
     <span class="msg-erro"
     *ngIf="formRegistro.get('cpf').hasError(erro.tipo) && (formRegistro.get('cpf').dirty || formRegistro.get('cpf').touched)">
@@ -45,10 +45,10 @@
 
 <ion-item lines="none">
   <ion-label position="stacked">Data de Nascimento</ion-label>
-  <ion-datetime displayFormat="DD/MM/YYYY" placeholder="Selecione" cancelText="Cancelar" doneText="OK"></ion-datetime>
-  <ng-container *ngFor="let erro of mensagens_validacao.data de nascimento">
+  <ion-datetime formControlName="datadenascimento" displayFormat="DD/MM/YYYY" placeholder="Selecione" cancelText="Cancelar" doneText="OK"></ion-datetime>
+  <ng-container *ngFor="let erro of mensagens_validacao.datadenascimento">
     <span class="msg-erro"
-    *ngIf="formRegistro.get('data de nascimento').hasError(erro.tipo) && (formRegistro.get('data de nascimento').dirty || formRegistro.get('data de nascimento').touched)">
+    *ngIf="formRegistro.get('datadenascimento').hasError(erro.tipo) && (formRegistro.get('datadenascimento').dirty || formRegistro.get('datadenascimento').touched)">
     {{erro.mensagem}}
     </span>
 
@@ -57,7 +57,7 @@
 
 <ion-item lines="none">
   <ion-label position="stacked">Gênero</ion-label>
-  <ion-select placeholder="Selecione" cancelText="Cancelar">
+  <ion-select formControlName="genero" placeholder="Selecione" cancelText="Cancelar">
     <ion-select-option value="F">Feminino</ion-select-option>
     <ion-select-option value="M">Masculino</ion-select-option>
     <ion-select-option value="O">Outro</ion-select-option>
@@ -73,7 +73,7 @@
 
 <ion-item lines="none">
   <ion-label position="stacked">Celular</ion-label>
-  <ion-input type="text" placeholder="Digite seu celular"></ion-input>
+  <ion-input  formControlName="celular" type="text" placeholder="Digite seu celular"></ion-input>
   <ng-container *ngFor="let erro of mensagens_validacao.celular">
     <span class="msg-erro"
     *ngIf="formRegistro.get('celular').hasError(erro.tipo) && (formRegistro.get('celular').dirty || formRegistro.get('celular').touched)">
@@ -85,7 +85,7 @@
 
 <ion-item lines="none">
   <ion-label position="stacked">E-mail</ion-label>
-  <ion-input type="text" placeholder="Digite seu E-mail"></ion-input>
+  <ion-input formControlName="email" type="text" placeholder="Digite seu E-mail"></ion-input>
   <ng-container *ngFor="let erro of mensagens_validacao.email">
     <span class="msg-erro"
     *ngIf="formRegistro.get('email').hasError(erro.tipo) && (formRegistro.get('email').dirty || formRegistro.get('email').touched)">
@@ -97,7 +97,7 @@
 
 <ion-item lines="none">
   <ion-label position="stacked">Senha</ion-label>
-  <ion-input type="password" placeholder="Escolha uma senha"></ion-input>
+  <ion-input formControlName="senha" type="password" placeholder="Escolha uma senha"></ion-input>
   <ng-container *ngFor="let erro of mensagens_validacao.senha">
     <span class="msg-erro"
     *ngIf="formRegistro.get('senha').hasError(erro.tipo) && (formRegistro.get('senha').dirty || formRegistro.get('senha').touched)">
@@ -109,7 +109,7 @@
 
 <ion-item lines="none">
   <ion-label position="stacked">Confirme</ion-label>
-  <ion-input type="password" placeholder="Confirme a sua senha"></ion-input>
+  <ion-input formControlName="confirmasenha" type="password" placeholder="Confirme a sua senha"></ion-input>
   <ng-container *ngFor="let erro of mensagens_validacao.confirmasenha">
     <span class="msg-erro"
     *ngIf="formRegistro.get('confirmasenha').hasError(erro.tipo) && (formRegistro.get('confirmasenha').dirty || formRegistro.get('confirmasenha').touched)">
