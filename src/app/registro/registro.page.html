@@ -1,9 +1,12 @@
 <ion-content color="tertiary" [fullscreen]="true">
+  
 
 <div class="ion-text-center">
    <img src="assets/etec2.png" alt="Etec">
 </div>
 
+<form [formGroup]="formRegistro">
+  
 <ion-item class="ion-text-center ion-button-light">
   <ion-label>
     NOVO USUÁRIO
@@ -123,5 +126,5 @@
 <ion-button expand="full" fill="clear" color="light" routerLink="/login">
   VOLTAR
 </ion-button>
-
+</form>
 </ion-content>
