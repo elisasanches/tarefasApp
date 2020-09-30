@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CpfValidator} from '../validators/cpf-validator';
+import { CpfValidator } from '../validators/cpf-validator';
 import { ComparacaoValidator } from '../validators/comparacao-validator';
 import { UsuariosService } from '../services/usuarios.service';
 import { AlertController } from '@ionic/angular';
@@ -56,11 +56,13 @@ export class RegistroPage implements OnInit {
     ]
   };
 
-  constructor(private formBuilder: FormBuilder,
-     private router: Router,
-     private usuariosService: UsuariosService,
-     public alertController: AlertController
-     ) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private usuariosService: UsuariosService,
+    public alertController: AlertController
+  ) {
+    
     this.formRegistro = formBuilder.group({
       nome: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       cpf: ['', Validators.compose([Validators.required, Validators.minLength(11), Validators.maxLength(14),
@@ -76,9 +78,9 @@ export class RegistroPage implements OnInit {
     });
   }
 
-   async ngOnInit() {
-     await this.usuariosService.buscarTodos();
-     console.log(this.usuariosService.listaUsuarios);
+  async ngOnInit() {
+    await this.usuariosService.buscarTodos();
+    console.log(this.usuariosService.listaUsuarios);
   }
 
   public async salvarFormulario() {
@@ -93,13 +95,13 @@ export class RegistroPage implements OnInit {
       usuario.email = this.formRegistro.value.email;
       usuario.senha = this.formRegistro.value.senha;
 
-      if(await this.usuariosService.salvar(usuario)) {
+      if (await this.usuariosService.salvar(usuario)) {
         this.exibirAlerta('SUCESSO!', 'Usuário salvo com sucesso!');
         this.router.navigateByUrl('/login');
       } else {
         this.exibirAlerta('ERRO!', 'Erro ao salvar o usuário!')
       }
-    
+
     } else {
       this.exibirAlerta('ADVERTENCIA!', 'Formulário Inválido<br/>Verifique os campos do seu formulário!');
     }
