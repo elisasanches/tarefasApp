@@ -76,6 +76,36 @@ export class AlterarUsuarioPage implements OnInit {
     delete this.usuario.manterLogado;
 
     this.formAlterar.setValue(this.usuario);
+    this.formAlterar.patchValue({ datadenascimento: this.usuario.dataNascimento.toISOString() });
  }
 
+   public async salvar() {
+     if (this.formAlterar.valid) {
+       this.usuario.nome = this.formAlterar.value.nome;
+       this.usuario.dataNascimento = new Date(this.formAlterar.value.datadenascimento);
+       this.usuario.genero = this.formAlterar.value.genero;
+       this.usuario.celular = this.formAlterar.value.celular;
+       this.usuario.email = this.formAlterar.value.email;
+
+       if(await this.usuariosService.alterar(this.usuario)) {
+         this.usuario.manterLogado = this.manterLogadoTemp;
+         this.usuariosService.salvarUsuarioLogado(this.usuario);
+         this.exibirAlerta("SUCESSO!", "Usuário alterado com sucesso!");
+         this.router.navigateByUrl('/configuracoes');
+       }
+
+     } else {
+      this.exibirAlerta('ADVERTENCIA!', 'Formulário Inválido<br/>Verifique os campos do seu formulário!');
+     }
+   }
+
+   async exibirAlerta(titulo: string, mensagem: string) {
+    const alert = await this.alertController.create({
+      header: titulo,
+      message: mensagem,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 }
